@@ -314,6 +314,10 @@ relations:
 
 ## 7. 知识领域（Knowledge Domains）
 
+> **权威来源**: 本表为系统支持的全部 12 个知识领域定义。
+> 用户级个性化配置（每个用户的 `purpose.md`）可能仅包含部分领域。
+> Agent 应读取 `purpose.md` 确定优先级，未配置的领域使用默认 P2 优先级。
+
 | ID | 领域 | 说明 |
 |----|------|------|
 | D01 | GPU Architecture | GPU 架构 |
@@ -400,19 +404,28 @@ function discoverUsers() {
 ### 9.4 新用户感知
 
 **Indexer 如何发现新用户**：
-- Indexer **不主动轮询新用户**
-- 新用户创建后，需要**重启 Indexer** 才能被发现
-- 或者依赖 Docker Compose 重建触发冷启动
+- Indexer 启动时执行 `discoverUsers()` 扫描已有用户
+- 启动后每隔 `DISCOVERY_INTERVAL_MS`（默认 15 秒）轮询一次 `users/` 目录
+- 发现新用户后自动启动 chokidar 监控，无需重启容器
+- 新用户内容首次写入时触发 Indexer 的 `add` 事件，自动索引
 
 **推荐流程**：
 ```bash
-# 创建新用户后，重启 Indexer
-docker compose restart pkgm-indexer
+# 创建新用户后，无需任何操作
+# Indexer 会在 15 秒内自动发现并开始监控
 ```
 
-**自动化方案（可选）**：
-- 在 create-agent 技能中添加对 Indexer 的 API 调用
-- 或使用 inotifywait 监控 users/ 目录变化
+**日志输出**：
+```
+[Indexer] Discovered new user(s): charlie
+[Indexer] Watching user: charlie → /workspace/project/PKGM/users/charlie/content
+[Indexer] charlie: scan complete
+```
+
+**配置项**：
+| 环境变量 | 默认值 | 说明 |
+|---------|--------|------|
+| DISCOVERY_INTERVAL_MS | 15000 | 新用户发现轮询间隔（毫秒） |
 
 ---
 
@@ -431,6 +444,7 @@ docker compose restart pkgm-indexer
 |------|------|------|
 | V1.0 | 2026-04-22 | 初始版本（单租户架构） |
 | V2.0 | 2026-04-23 | 重写对齐多租户三项目架构，补充 Frontmatter 规范 |
+| V2.1 | 2026-04-23 | 补充 Indexer 动态用户发现机制（P0-1） |
 
 ---
 

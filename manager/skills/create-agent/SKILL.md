@@ -26,10 +26,10 @@ mkdir -p /workspace/project/PKGM/users/{username}/{
 ```
 
 ### Step 3.5: 初始化用户 Wiki 目录（PKGM 多租户）
-从 `/workspace/project/PKGM-Wiki/skills/pkgm/scripts/init_user_wiki.sh` 初始化用户级 PKGM Wiki：
+从 `manager/scripts/init_user_wiki.sh` 初始化用户级 PKGM Wiki：
 
 ```bash
-bash /workspace/project/PKGM-Wiki/skills/pkgm/scripts/init_user_wiki.sh {username}
+bash manager/scripts/init_user_wiki.sh {username}
 ```
 
 这将在 `content/app/wiki/` 下创建完整的 PKGM 目录结构：
