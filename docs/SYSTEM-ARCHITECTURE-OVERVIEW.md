@@ -209,8 +209,8 @@ relations:
 ```
 
 **依赖项**：
-- `/workspace/project/PKGM-Wiki/references/default-configs/schema.yaml` - 实体/关系 Schema
-- `/workspace/project/PKGM-Wiki/purpose.md` - 知识领域定义
+- `../PKGM-Wiki/schema.yaml` - 实体/关系 Schema
+- `../PKGM-Wiki/purpose.md` - 知识领域定义
 - Python 脚本层（pkgm_*.py）
 
 **不负责的领域**：
@@ -445,6 +445,8 @@ Next.js SSE 推送 → 浏览器
 ```
 
 ### 5.2 各项目管理目录
+
+> **注意**：以下路径为 OpenClaw 容器内环境路径，用于说明系统结构。
 
 ```
 /workspace/project/PKGM/

@@ -135,8 +135,8 @@ Phase 5: pkgm-lint（质量门控）
 - `/workspace/project/PKGM/users/{username}/content/app/wiki/01_Wiki/*.md`
 
 **依赖项**：
-- `/workspace/project/PKGM-Wiki/references/default-configs/schema.yaml`
-- `/workspace/project/PKGM-Wiki/purpose.md`
+- `../PKGM-Wiki/schema.yaml`
+- `../PKGM-Wiki/purpose.md`
 
 **不负责的领域**：
 - ❌ 用户创建和管理
@@ -268,7 +268,7 @@ relations:
 - `lifecycle.status`: active/superseded/deprecated/refuted
 - `relations`: wikilink 格式 `[[页面名]]`
 
-详细规范参见 [PKGM-Wiki schema.yaml](/workspace/project/PKGM-Wiki/references/default-configs/schema.yaml)。
+详细规范参见 [PKGM-Wiki schema.yaml](../PKGM-Wiki/schema.yaml)。
 
 ---
 
@@ -308,7 +308,7 @@ relations:
 | R14 | AFFILIATED_WITH | 隶属 |
 | R15 | USED_IN | 使用于 |
 
-详细 Schema 定义参见 [PKGM-Wiki schema.yaml](/workspace/project/PKGM-Wiki/references/default-configs/schema.yaml)。
+详细 Schema 定义参见 [PKGM-Wiki schema.yaml](../PKGM-Wiki/schema.yaml)。
 
 ---
 
@@ -333,7 +333,7 @@ relations:
 | D11 | Operating System | 操作系统 |
 | D12 | Distributed Systems | 分布式系统 |
 
-详细领域定义参见 [PKGM-Wiki purpose.md](/workspace/project/PKGM-Wiki/purpose.md)。
+详细领域定义参见 [PKGM-Wiki purpose.md](../PKGM-Wiki/purpose.md)。
 
 ---
 
